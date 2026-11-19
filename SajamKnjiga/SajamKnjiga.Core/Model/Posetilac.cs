@@ -19,11 +19,14 @@ public class Posetilac : ISerializable
 
     public List<Kupovina> Kupovine { get; set; } = new List<Kupovina>();
 
-    public double ProsecnaOcena()
+    public double ProsecnaOcena
     {
-        if (Kupovine.Count == 0)
-            return 0.0;
-        return Kupovine.Average(k => k.Ocena);
+        get
+        {
+            if (Kupovine.Count == 0)
+                return 0.0;
+            return Kupovine.Average(k => k.Ocena);
+        }
     }
 
     public Posetilac() { }

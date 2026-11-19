@@ -4,7 +4,7 @@ using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
 
-//po uzoru na vezbe 3 CRUDExample - DAO/VehicleDAO.cs
+//po uzoru na vezbe 3 CRUDExample - DAO/VehiclesDAO.cs
 
 public class KupovinaDAO
 {
@@ -56,20 +56,26 @@ public class KupovinaDAO
         Kupovina? kupovina = NadjiKupovinuPoId(id);
         if (kupovina is null)
             return null;
+        kupovina.Posetilac?.Kupovine.Remove(kupovina);
         _kupovine.Remove(kupovina);
         _storage.Save(_kupovine);
         return kupovina;
     }
 
-    public void ObrišiKupovinePosetioca(int posetilacId)
+    public void ObrisiKupovinePosetioca(int posetilacId)
     {
         _kupovine.RemoveAll(k => k.PosetilacId == posetilacId);
         _storage.Save(_kupovine);
     }
 
-    public void ObrišiKupovineKnjige(int knjigaId)
+    public void ObrisiKupovineKnjige(int knjigaId)
     {
-        _kupovine.RemoveAll(k => k.KnjigaId == knjigaId);
+        List<Kupovina> zaBrisanje = _kupovine.FindAll(k => k.KnjigaId == knjigaId);
+        foreach (Kupovina kupovina in zaBrisanje)
+        {
+            kupovina.Posetilac?.Kupovine.Remove(kupovina);
+            _kupovine.Remove(kupovina);
+        }
         _storage.Save(_kupovine);
     }
     public Kupovina? NadjiKupovinuPoId(int id)
