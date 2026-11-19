@@ -8,10 +8,10 @@ namespace SajamKnjiga.CLI
         static void Main()
         {
             KnjigaDAO knjigaDAO = new KnjigaDAO();
-            AutorDAO autorDAO = new AutorDAO(knjigaDAO);
+            IzdavacDAO izdavacDAO = new IzdavacDAO();
+            AutorDAO autorDAO = new AutorDAO(knjigaDAO, izdavacDAO);
             PosetilacDAO posetilacDAO = new PosetilacDAO();
             KupovinaDAO kupovinaDAO = new KupovinaDAO();
-            IzdavacDAO izdavacDAO = new IzdavacDAO();
             ListaZeljaDAO listaZeljaDAO = new ListaZeljaDAO();
 
             knjigaDAO.Povezi(autorDAO.NadjiSveAutore());

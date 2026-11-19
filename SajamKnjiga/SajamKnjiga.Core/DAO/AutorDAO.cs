@@ -8,10 +8,12 @@ namespace SajamKnjiga.Core.DAO;
         private readonly List<Autor> _autori;
         private readonly Storage<Autor> _storage;
         private readonly KnjigaDAO _knjigaDAO;
+        private readonly IzdavacDAO _izdavacDAO;
 
-        public AutorDAO(KnjigaDAO knjigaDAO)
+        public AutorDAO(KnjigaDAO knjigaDAO, IzdavacDAO izdavacDAO)
         {
             _knjigaDAO = knjigaDAO;
+            _izdavacDAO = izdavacDAO;
             _storage = new Storage<Autor>("autori.txt");
             _autori = _storage.Load();
         }
@@ -63,6 +65,7 @@ namespace SajamKnjiga.Core.DAO;
                 return null;
 
             _knjigaDAO.UkloniAutoraSaSvihKnjiga(autor);
+            _izdavacDAO.UkloniSefa(autor.Id);
             _autori.Remove(autor);
             _storage.Save(_autori);
             return autor;
