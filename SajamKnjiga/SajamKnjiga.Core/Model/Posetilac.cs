@@ -16,6 +16,16 @@ public class Posetilac : ISerializable
     public string BrojClanskeKarte { get; set; } = string.Empty;
     public int TrenutnaGodinaClanstva { get; set; }
     public StatusPosetioca Status { get; set; }
+
+    public List<Kupovina> Kupovine { get; set; } = new List<Kupovina>();
+
+    public double ProsecnaOcena()
+    {
+        if (Kupovine.Count == 0)
+            return 0.0;
+        return Kupovine.Average(k => k.Ocena);
+    }
+
     public Posetilac() { }
     public string[] ToCSV()
     {
@@ -64,6 +74,7 @@ public class Posetilac : ISerializable
         return $"ID: {Id}|Karta: {BrojClanskeKarte}|Ime: {Ime} {Prezime}|" +
               $"Datum rođenja: {DatumRodjenja:dd.MM.yyyy}|Adresa: {Adresa}|" +
               $"Telefon: {Telefon}|Email: {Email}|Godina članstva: {TrenutnaGodinaClanstva}|" +
-              $"Status: {(Status == StatusPosetioca.V ? "VIP" : "Redovan")}";
+              $"Status: {(Status == StatusPosetioca.V ? "VIP" : "Redovan")}" + 
+              $"Prosecna ocena: {ProsecnaOcena:0.00}";
     }
 }
