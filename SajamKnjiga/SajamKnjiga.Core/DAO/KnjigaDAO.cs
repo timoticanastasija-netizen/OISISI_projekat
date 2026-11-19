@@ -28,6 +28,20 @@ public class KnjigaDAO{
         }
     }
 
+    public void PoveziKupce(List<Kupovina> kupovine)
+    {
+        foreach (Kupovina kupovina in kupovine)
+        {
+            Knjiga? knjiga = NadjiKnjigu(kupovina.KnjigaId);
+            if (knjiga is null || kupovina.Posetilac is null) continue;
+
+            if(!knjiga.Kupci.Contains(kupovina.Posetilac))
+            {
+                knjiga.Kupci.Add(kupovina.Posetilac);
+            }
+        }
+    }
+
     private void SacuvajVeze()
     {
         _veze.Clear();
