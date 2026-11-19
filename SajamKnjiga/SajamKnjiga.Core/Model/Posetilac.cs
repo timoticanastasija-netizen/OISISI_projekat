@@ -79,7 +79,7 @@ public class Posetilac : ISerializable
         return $"ID: {Id}|Karta: {BrojClanskeKarte}|Ime: {Ime} {Prezime}|" +
               $"Datum rođenja: {DatumRodjenja:dd.MM.yyyy}|Adresa: {Adresa}|" +
               $"Telefon: {Telefon}|Email: {Email}|Godina članstva: {TrenutnaGodinaClanstva}|" +
-              $"Status: {(Status == StatusPosetioca.V ? "VIP" : "Redovan")}" + 
+              $"Status: {(Status == StatusPosetioca.V ? "VIP" : "Redovan")}|" + 
               $"Prosecna ocena: {ProsecnaOcena:0.00}";
     }
 }

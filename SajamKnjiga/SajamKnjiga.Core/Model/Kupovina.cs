@@ -44,7 +44,8 @@ public class Kupovina : ISerializable
 
     public override string ToString()
     {
-        return $"Kupovina [Id={Id}, PosetilacId={PosetilacId}, KnjigaId={KnjigaId}, DatumKupovine={DatumKupovine}, Ocena={Ocena}, Komentar={Komentar}]";
+        return $"ID: {Id}|Posetilac: {Posetilac?.Ime} {Posetilac?.Prezime}|Knjiga: {Knjiga?.Naziv}|" +
+               $"Datum: {DatumKupovine:dd.MM.yyyy}|Ocena: {Ocena}|Komentar: {Komentar}";
     }
 
 }
