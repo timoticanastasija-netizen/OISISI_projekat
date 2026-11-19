@@ -3,6 +3,8 @@ using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
 
+//po uzoru na vezbe 3 CRUDExample - DAO/VehicleDAO.cs
+
 public class PosetilacDAO
 {
     private readonly List<Posetilac> _posetioci;

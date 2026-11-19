@@ -4,6 +4,8 @@ using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
 
+//po uzoru na vezbe 3 CRUDExample - DAO/VehicleDAO.cs
+
 public class KupovinaDAO
 {
     private readonly List<Kupovina> _kupovine;
@@ -33,6 +35,7 @@ public class KupovinaDAO
     {
         kupovina.Id = GenerateId();
         _kupovine.Add(kupovina);
+        kupovina.Posetilac?.Kupovine.Add(kupovina);
         _storage.Save(_kupovine);
         return kupovina;
     }
