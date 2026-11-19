@@ -1,5 +1,4 @@
 using SajamKnjiga.Core.Serialization;
-using SajamKnjiga.Core.Utils;
 
 namespace SajamKnjiga.Core.Model;
 
@@ -10,6 +9,12 @@ public class AutorKnjiga:ISerializable
 
     public AutorKnjiga()
     {
+    }
+
+    public AutorKnjiga(int autorId, int knjigaId)
+    {
+        AutorId = autorId;
+        KnjigaId = knjigaId;
     }
 
     public string[] ToCSV()
