@@ -55,7 +55,7 @@ public class Knjiga : ISerializable
     public override string ToString()
     {
         return $"ID: {Id}|ISBN: {Isbn}|"+
-        $"Naziv: {Naziv}|Žanr: {Zanr}|Godina izdavanja: {GodinaIzdavanja}|Cena: {Cena:C}|Broj strana: {BrojStrana} .str |"+
+        $"Naziv: {Naziv}|Žanr: {Zanr}|Godina izdavanja: {GodinaIzdavanja}|Cena: {Cena:C}|Broj strana: {BrojStrana} str. |"+
         $"Autori: {string.Join(", ", Autori.Select(a => $"{a.Ime} {a.Prezime}"))}|Izdavač ID: {(IzdavacId.HasValue ? IzdavacId.Value.ToString() : "Nema izdavača")}|Kupci: {string.Join(", ", Kupci.Select(p => $"{p.Ime} {p.Prezime}"))}";
     }
 }
