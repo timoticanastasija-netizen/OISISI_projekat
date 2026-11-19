@@ -9,8 +9,12 @@ namespace SajamKnjiga.CLI
         {
             KnjigaDAO knjigaDAO = new KnjigaDAO();
             AutorDAO autorDAO = new AutorDAO(knjigaDAO);
+            PosetilacDAO posetilacDAO = new PosetilacDAO();
+            KupovinaDAO kupovinaDAO = new KupovinaDAO();
 
             knjigaDAO.Povezi(autorDAO.NadjiSveAutore());
+            kupovinaDAO.PoveziKupovineSaPosetiocima(posetilacDAO.NadjiSvePosetioce(), knjigaDAO.SveKnjige());
+            knjigaDAO.PoveziKupce(kupovinaDAO.NadjiSveKupovine());
 
             AutorConsoleView autorView = new AutorConsoleView(autorDAO);
             KnjigaConsoleView knjigaView = new KnjigaConsoleView(knjigaDAO, autorDAO);
