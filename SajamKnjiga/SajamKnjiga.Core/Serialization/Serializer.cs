@@ -3,6 +3,7 @@ using System.Text;
 
 namespace SajamKnjiga.Core.Serialization;
 
+// preuzeto sa vezbi 3
 
 public class Serializer<T> where T : ISerializable, new()
 {
@@ -14,7 +15,7 @@ public class Serializer<T> where T : ISerializable, new()
 
     foreach ( ISerializable obj in objects)
         {
-            string line = string.Join(Delimiter.ToString(), obj.toCSV());
+            string line = string.Join(Delimiter.ToString(), obj.ToCSV());
             sb.AppendLine(line);
         }
 
@@ -29,7 +30,7 @@ public class Serializer<T> where T : ISerializable, new()
         {
             string[] csvValues = line.Split(Delimiter);
             T obj = new T();
-            obj.fromCSV(csvValues);
+            obj.FromCSV(csvValues);
             objects.Add(obj);
         }
 
