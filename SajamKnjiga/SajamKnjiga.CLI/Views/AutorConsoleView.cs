@@ -114,6 +114,7 @@ class AutorConsoleView
             System.Console.WriteLine("Autor sa datim ID-jem ne postoji.");
             return;
         }
+        _autorDAO.ObrisiAutora(id);
 
         System.Console.WriteLine("Autor je uspešno obrisan.");
     }
