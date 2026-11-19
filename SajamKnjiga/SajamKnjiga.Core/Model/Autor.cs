@@ -58,7 +58,7 @@ public class Autor : ISerializable
     public override string ToString()
     {
         return $"ID: {Id}|Ime: {Ime} {Prezime}|Datum rođenja: {DatumRodjenja:dd.MM.yyyy}|Adresa: {Adresa}|"+
-        $"Email: {Email}| Telefon: {Telefon}|Broj lične karte: {BrojLicneKarte}|Godine iskustva: {GodineIskustva}"+
+        $"Email: {Email}| Telefon: {Telefon}|Broj lične karte: {BrojLicneKarte}|Godine iskustva: {GodineIskustva}|"+
         $"Knjige: {string.Join(", ", Knjige.Select(k => k.Naziv))}";
     }
 }
