@@ -6,13 +6,12 @@ namespace SajamKnjiga.CLI
     class Program
     {
         static void Main()
-        {
-            KnjigaDAO knjigaDAO = new KnjigaDAO();
+        {   KupovinaDAO kupovinaDAO = new KupovinaDAO();
+            ListaZeljaDAO listaZeljaDAO = new ListaZeljaDAO();
+            KnjigaDAO knjigaDAO = new KnjigaDAO(kupovinaDAO, listaZeljaDAO);
             IzdavacDAO izdavacDAO = new IzdavacDAO();
             AutorDAO autorDAO = new AutorDAO(knjigaDAO, izdavacDAO);
             PosetilacDAO posetilacDAO = new PosetilacDAO();
-            KupovinaDAO kupovinaDAO = new KupovinaDAO();
-            ListaZeljaDAO listaZeljaDAO = new ListaZeljaDAO();
 
             knjigaDAO.Povezi(autorDAO.NadjiSveAutore());
             kupovinaDAO.PoveziKupovineSaPosetiocima(posetilacDAO.NadjiSvePosetioce(), knjigaDAO.SveKnjige());

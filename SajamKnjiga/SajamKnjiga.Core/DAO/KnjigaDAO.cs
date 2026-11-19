@@ -8,12 +8,17 @@ public class KnjigaDAO{
     private readonly Storage<Knjiga> _storage;
     private readonly List<AutorKnjiga> _veze;
     private readonly Storage<AutorKnjiga> _vezeStorage;
+    private readonly KupovinaDAO _kupovinaDAO;
+    private readonly ListaZeljaDAO _listaZeljaDAO;
 
-    public KnjigaDAO() {
+    public KnjigaDAO(KupovinaDAO kupovinaDAO, ListaZeljaDAO listaZeljaDAO) {
+        _kupovinaDAO = kupovinaDAO;
+        _listaZeljaDAO = listaZeljaDAO;
         _storage = new Storage<Knjiga>("knjige.txt");
         _knjige = _storage.Load();
         _vezeStorage = new Storage<AutorKnjiga>("autoriKnjiga.txt");
         _veze = _vezeStorage.Load();
+       
     }
     public void Povezi(List<Autor> autori)
     {
@@ -107,6 +112,8 @@ public class KnjigaDAO{
         {
             autor.Knjige.Remove(knjiga);
         }
+        _kupovinaDAO.ObrisiKupovineKnjige(knjiga.Id);
+        _listaZeljaDAO.UkloniSveStavkeZaKnjigu(knjiga);
 
         _knjige.Remove(knjiga);
         _storage.Save(_knjige);
