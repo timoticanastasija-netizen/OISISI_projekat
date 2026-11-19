@@ -33,9 +33,9 @@ static class ConsoleViewUtils
         {
             DateTime input;
             string rawInput = System.Console.ReadLine() ?? string.Empty;
-            while (!DateTime.TryParseExact(rawInput, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out input))
+            while (!DateTime.TryParseExact(rawInput, "dd.MM.yyyy.", CultureInfo.InvariantCulture, DateTimeStyles.None, out input))
             {
-                System.Console.WriteLine("Invalid input. Please enter a valid date in the format dd.MM.yyyy.");
+                System.Console.WriteLine("Invalid input. Please enter a valid date in the format 'dd.MM.yyyy.'.");
                 rawInput = System.Console.ReadLine() ?? string.Empty;
             }
             return input;
@@ -71,7 +71,7 @@ static class ConsoleViewUtils
 
         public static DateTime InputDate(string poruka)
         {
-            System.Console.WriteLine(poruka + " (format: dd.MM.yyyy)");
+            System.Console.WriteLine(poruka + " (format: dd.MM.yyyy.)");
             return SafeInputDate();
         }
 
