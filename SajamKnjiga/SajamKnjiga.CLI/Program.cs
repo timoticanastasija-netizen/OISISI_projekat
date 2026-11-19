@@ -22,11 +22,12 @@ namespace SajamKnjiga.CLI
 
             AutorConsoleView autorView = new AutorConsoleView(autorDAO);
             KnjigaConsoleView knjigaView = new KnjigaConsoleView(knjigaDAO, autorDAO);
-            
-            RunMainMenu(autorView, knjigaView);
+            PosetilacConsoleView posetilacView = new PosetilacConsoleView(posetilacDAO, kupovinaDAO, listaZeljaDAO);
+
+            RunMainMenu(autorView, knjigaView, posetilacView);
         }
 
-        private static void RunMainMenu(AutorConsoleView autorView, KnjigaConsoleView knjigaView)
+        private static void RunMainMenu(AutorConsoleView autorView, KnjigaConsoleView knjigaView, PosetilacConsoleView posetilacView)
         {
             // Implementation for running the main menu
             while (true)
@@ -43,6 +44,9 @@ namespace SajamKnjiga.CLI
                     case "2":
                         knjigaView.RunMenu();
                         break;
+                    case "3":
+                        posetilacView.RunMenu();
+                        break;
                     default:
                         System.Console.WriteLine("Nepoznata opcija.");
                         break;
@@ -56,6 +60,7 @@ namespace SajamKnjiga.CLI
             System.Console.WriteLine("Glavni Meni Uprave Sajma Knjiga");
             System.Console.WriteLine("1. Autori");
             System.Console.WriteLine("2. Knjige");
+            System.Console.WriteLine("3. Posetioci");
             System.Console.WriteLine("0. Izlaz");
         }
     }
