@@ -1,0 +1,2 @@
+1|Ivo|Andric|1892-10-09|Travnik|bb|Travnik|Bosna i Hercegovina|ivo.andric@pisac.com|+38163456789|012345975|134
+2|Isidora|Sekulic|1877-02-16|Mosorin|bb|Mosorin|Srbija|isidora.sekulic@twin.com|+38164899221|0112346543|149
