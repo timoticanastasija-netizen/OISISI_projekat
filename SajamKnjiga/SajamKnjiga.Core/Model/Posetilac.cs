@@ -19,6 +19,8 @@ public class Posetilac : ISerializable
 
     public List<Kupovina> Kupovine { get; set; } = new List<Kupovina>();
 
+    public List<Knjiga> ListaZelja { get; set; } = new List<Knjiga>();
+
     public double ProsecnaOcena
     {
         get

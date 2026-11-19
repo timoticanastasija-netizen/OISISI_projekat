@@ -11,10 +11,14 @@ namespace SajamKnjiga.CLI
             AutorDAO autorDAO = new AutorDAO(knjigaDAO);
             PosetilacDAO posetilacDAO = new PosetilacDAO();
             KupovinaDAO kupovinaDAO = new KupovinaDAO();
+            IzdavacDAO izdavacDAO = new IzdavacDAO();
+            ListaZeljaDAO listaZeljaDAO = new ListaZeljaDAO();
 
             knjigaDAO.Povezi(autorDAO.NadjiSveAutore());
             kupovinaDAO.PoveziKupovineSaPosetiocima(posetilacDAO.NadjiSvePosetioce(), knjigaDAO.SveKnjige());
             knjigaDAO.PoveziKupce(kupovinaDAO.NadjiSveKupovine());
+            izdavacDAO.Povezi(autorDAO.NadjiSveAutore(), knjigaDAO.SveKnjige());
+            listaZeljaDAO.Povezi(posetilacDAO.NadjiSvePosetioce(), knjigaDAO.SveKnjige());
 
             AutorConsoleView autorView = new AutorConsoleView(autorDAO);
             KnjigaConsoleView knjigaView = new KnjigaConsoleView(knjigaDAO, autorDAO);
@@ -56,3 +60,4 @@ namespace SajamKnjiga.CLI
         }
     }
 }
+

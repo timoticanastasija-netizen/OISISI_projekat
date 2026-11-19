@@ -5,6 +5,8 @@ using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
 
+//po uzoru na vezbe 3 CRUDExample - DAO/VehiclesDAO.cs
+
 public class IzdavacDAO
 {
     private readonly List<Izdavac> _izdavaci;
