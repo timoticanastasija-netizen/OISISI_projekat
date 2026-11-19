@@ -1,7 +1,6 @@
 ﻿
 using SajamKnjiga.Core.Serialization;
 using SajamKnjiga.Core.Utils;
-using System.Security.Cryptography.X509Certificates;
 
 namespace SajamKnjiga.Core.Model;
 
