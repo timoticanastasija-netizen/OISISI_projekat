@@ -1,9 +1,11 @@
 ﻿
 namespace SajamKnjiga.Core.Serialization;
 
-public interface ISerializable // sto ne class
-{
-    string[] toCSV();
+//preuzeto sa vezbi 3
 
-    void fromCSV(string[] values);
+public interface ISerializable 
+{
+    string[] ToCSV();
+
+    void FromCSV(string[] values);
 }
