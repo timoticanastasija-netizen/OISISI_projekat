@@ -2,7 +2,7 @@ using SajamKnjiga.Core.Model;
 using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
-
+//Nakon izmene cuva se u fajl, a nakon brisanja se uklanja autor sa svih knjiga i uklanja se sef iz izdavaca, pa tek onda iz liste.
     public class AutorDAO
     {
         private readonly List<Autor> _autori;

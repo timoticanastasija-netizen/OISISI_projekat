@@ -2,7 +2,7 @@ using SajamKnjiga.Core.Model;
 using SajamKnjiga.Core.DAO;
 
 namespace SajamKnjiga.CLI.Views;
-
+//RunMenu, ShowMenu, HandleMenuInput, po uzoru na treće vežbe.
 class KnjigaConsoleView
 {
     private readonly KnjigaDAO _knjigaDAO;

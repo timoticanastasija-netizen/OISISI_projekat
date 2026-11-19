@@ -2,7 +2,8 @@ using SajamKnjiga.Core.Model;
 using SajamKnjiga.Core.Storage;
 
 namespace SajamKnjiga.Core.DAO;
-
+//Po Vezbi 3
+//Veza izmedju autora i knjige je many-to-many, pa se koristi klasa AutorKnjiga.
 public class KnjigaDAO{
     private readonly List<Knjiga> _knjige;
     private readonly Storage<Knjiga> _storage;
@@ -20,6 +21,7 @@ public class KnjigaDAO{
         _veze = _vezeStorage.Load();
        
     }
+    // Povezuje knjige sa autorima na osnovu veza iz fajla "autoriKnjiga.txt".
     public void Povezi(List<Autor> autori)
     {
         foreach (AutorKnjiga veza in _veze)
@@ -32,7 +34,7 @@ public class KnjigaDAO{
             autor.Knjige.Add(knjiga);
         }
     }
-
+//Vidi se ko je koju knjigu kupio na osnovu kupovina iz fajla "kupovine.txt".
     public void PoveziKupce(List<Kupovina> kupovine)
     {
         foreach (Kupovina kupovina in kupovine)
@@ -102,7 +104,7 @@ public class KnjigaDAO{
         SacuvajVeze();
         return stara;
     }
-
+// Kada se knjiga brise obrise obrise su se i kupovine i stavke lista zelja povezane sa njom.
     public Knjiga? ObrisiKnjigu(int id)
     {
         Knjiga? knjiga = NadjiKnjigu(id);
@@ -130,7 +132,7 @@ public class KnjigaDAO{
     {
         return _knjige;
     }
-
+//Autor koji se brise se uklanja sa svih knjiga
     public void UkloniAutoraSaSvihKnjiga(Autor autor)
     {
         foreach (Knjiga knjiga in autor.Knjige)

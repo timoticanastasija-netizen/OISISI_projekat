@@ -3,6 +3,8 @@ using SajamKnjiga.Core.Model;
 
 namespace SajamKnjiga.CLI.Views
 {
+    //Po trećim vežbama SafeInput* trazi unos dok nije ispravan, a Input* ispise poruku pa pozove SafeInput*.
+// Znak '|' nije dozvoljen u tekstu jer je separator u CSV fajlovima.
 static class ConsoleViewUtils
     {
         public static int SafeInputInt()
@@ -28,7 +30,7 @@ static class ConsoleViewUtils
             }
             return input;
         }
-
+// u CSV se upise kao yyyy-MM-dd, a korisnik unosi dd.MM.yyyy.
         public static DateTime SafeInputDate()
         {
             DateTime input;
