@@ -1,7 +1,8 @@
 ﻿
 using SajamKnjiga.Core.Model;
 using SajamKnjiga.Core.Storage;
-using System.Security.Cryptography.X509Certificates;
+
+//po uzoru na vezbe 3 SerializationExample, Model/StudentSubject.cs
 
 
 namespace SajamKnjiga.Core.DAO;

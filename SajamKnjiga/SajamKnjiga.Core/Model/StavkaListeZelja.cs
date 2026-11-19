@@ -25,8 +25,8 @@ public class StavkaListeZelja : ISerializable
     }
     public void FromCSV(string[] values)
     { 
-        PosetilacId = int.Parse(values[1]);
-        KnjigaId = int.Parse(values[2]);
+        PosetilacId = int.Parse(values[0]);
+        KnjigaId = int.Parse(values[1]);
     }
 
 }
