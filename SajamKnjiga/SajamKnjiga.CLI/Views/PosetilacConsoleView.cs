@@ -13,11 +13,14 @@ namespace SajamKnjiga.CLI.Views;
     private readonly KupovinaDAO _kupovinaDAO;
     private readonly ListaZeljaDAO _listaZeljaDAO;
 
-    public PosetilacConsoleView(PosetilacDAO posetilacDAO, KupovinaDAO kupovinaDAO, ListaZeljaDAO listaZeljaDAO)
+    private readonly KnjigaDAO _knjigaDAO;
+
+    public PosetilacConsoleView(PosetilacDAO posetilacDAO, KupovinaDAO kupovinaDAO, ListaZeljaDAO listaZeljaDAO, KnjigaDAO knjigaDAO)
     {
         _posetilacDAO = posetilacDAO;
         _kupovinaDAO = kupovinaDAO;
         _listaZeljaDAO = listaZeljaDAO;
+        _knjigaDAO = knjigaDAO;
     }
 
     public void RunMenu()
@@ -39,6 +42,8 @@ namespace SajamKnjiga.CLI.Views;
         System.Console.WriteLine("2. Dodaj posetioca");
         System.Console.WriteLine("3. Izmeni posetioca");
         System.Console.WriteLine("4. Obrisi posetioca");
+        System.Console.WriteLine("5. Dodaj knjigu u listu zelja");
+        System.Console.WriteLine("6. Prikazi listu zelja posetioca");
         System.Console.WriteLine("0. Povratak na glavni meni");
         System.Console.Write("Izaberite opciju: ");
     }
@@ -59,6 +64,12 @@ namespace SajamKnjiga.CLI.Views;
             case "4":
                 RemovePosetilac();
                 break;
+            case "5":
+                AddNaListuZelja();
+                break;
+            case "6":
+                ShowListaZelja();
+                break;
             default:
                 System.Console.WriteLine("Nepoznata opcija.");
                 break;
@@ -71,6 +82,46 @@ namespace SajamKnjiga.CLI.Views;
         foreach (Posetilac p in _posetilacDAO.NadjiSvePosetioce())
         {
             System.Console.WriteLine(p);
+        }
+    }
+        private void AddNaListuZelja()
+    {
+        int posetilacId = ConsoleViewUtils.InputInt("Unesite ID posetioca: ");
+        Posetilac? posetilac = _posetilacDAO.NadjiPosetiocaPoId(posetilacId);
+        if (posetilac == null)
+        {
+            System.Console.WriteLine("Posetilac sa datim ID-jem ne postoji.");
+            return;
+        }
+
+        int knjigaId = ConsoleViewUtils.InputInt("Unesite ID knjige: ");
+        Knjiga? knjiga = _knjigaDAO.NadjiKnjigu(knjigaId);
+        if (knjiga == null)
+        {
+            System.Console.WriteLine("Knjiga sa datim ID-jem ne postoji.");
+            return;
+        }
+
+        if (_listaZeljaDAO.DodajNaListuZelja(posetilac, knjiga))
+            System.Console.WriteLine("Knjiga je dodata na listu zelja.");
+        else
+            System.Console.WriteLine("Knjiga je vec na listi zelja ili ju je posetilac vec kupio.");
+    }
+
+    private void ShowListaZelja()
+    {
+        int posetilacId = ConsoleViewUtils.InputInt("Unesite ID posetioca: ");
+        Posetilac? posetilac = _posetilacDAO.NadjiPosetiocaPoId(posetilacId);
+        if (posetilac == null)
+        {
+            System.Console.WriteLine("Posetilac sa datim ID-jem ne postoji.");
+            return;
+        }
+
+        System.Console.WriteLine("=== Lista zelja ===");
+        foreach (Knjiga k in posetilac.ListaZelja)
+        {
+            System.Console.WriteLine(k);
         }
     }
 

@@ -21,7 +21,7 @@ namespace SajamKnjiga.CLI
 
             AutorConsoleView autorView = new AutorConsoleView(autorDAO);
             KnjigaConsoleView knjigaView = new KnjigaConsoleView(knjigaDAO, autorDAO);
-            PosetilacConsoleView posetilacView = new PosetilacConsoleView(posetilacDAO, kupovinaDAO, listaZeljaDAO);
+            PosetilacConsoleView posetilacView = new PosetilacConsoleView(posetilacDAO, kupovinaDAO, listaZeljaDAO, knjigaDAO);
             KupovinaConsoleView kupovinaView = new KupovinaConsoleView(kupovinaDAO, posetilacDAO, knjigaDAO, listaZeljaDAO);
             IzdavacConsoleView izdavacView = new IzdavacConsoleView(izdavacDAO, autorDAO);
 
