@@ -29,7 +29,7 @@ public class AutorKnjiga:ISerializable
 
     public void FromCSV(string[] values)
     {
-        AutorId = int.Parse(values[1]);
-        KnjigaId = int.Parse(values[2]);
+        AutorId = int.Parse(values[0]);
+        KnjigaId = int.Parse(values[1]);
     }
 }
